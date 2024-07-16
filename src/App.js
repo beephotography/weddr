@@ -33,6 +33,15 @@ function App() {
         ;
     };
 
+    const updateWeather = (longitude, latitude) => {
+	setCoordsList(
+	    {
+	        "latitude": latitude,
+		"longitude": longitude
+	    }
+	);
+    }
+
     const hasCityList = () => {
         if (undefined === cityList) {
             return false;
@@ -68,10 +77,10 @@ function App() {
                     </button>
                 </div>
                 <div className="mb-4">
-                    <ul className="list-disc">
+                    <ul className="list-decimal">
                         {hasCityList() ? (
                             cityList.map(city => (
-                                <li key={city.id}>
+                                <li key={city.id} onClick={() => updateWeather(city.longitude, city.latitude)}>
                                     <div>
                                         Longitude: {city.longitude}, Latitude: {city.latitude}
                                     </div>
